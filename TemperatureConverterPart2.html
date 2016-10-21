@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature Converter</title>
+</head>
+<script type="text/javascript">
+    function convert(temp) {
+        var celsius = document.getElementById('for');
+        var fahrenheit = document.getElementById('usa');
+        var C2F;
+        var F2C;
+
+        try {
+            if (temp == "F") {
+                C2F = ( fahrenheit.value - 32 ) * 5 / 9;
+                celsius.value = Math.round(C2F);
+
+                if (isNaN(fahrenheit.value)) {
+                    celsius.value = "Must Enter a #"
+                }
+
+            }
+        }
+
+        catch (err) {
+            console.log(err);
+        }
+
+        try {
+            if (temp == "C") {
+                F2C = celsius.value * 9 / 5 + 32;
+                fahrenheit.value = Math.round(F2C);
+
+                if (isNaN(celsius.value)) {
+                    fahrenheit.value = "Must Enter a #"
+                }
+            }
+        }
+
+        catch (err) {
+            console.log(err);
+        }
+    }
+</script>
+<style>
+    html {
+        background-image: url("https://cdn3.iconfinder.com/data/icons/3d-printing-icon-set/512/Temperature.png");
+    }
+
+    h2 {
+        font-size: 200%;
+    }
+
+    h3 {
+        font-size: 140%;
+    }
+
+    label {
+        font-size: 130%;
+    }
+    input{
+        color: red;
+    }
+</style>
+<body>
+<h2>Converting the temperature between Celsius & Fahrenheit</h2>
+<h3>Insert number into an input to convert</h3>
+<form>
+    <input type="text" id="for" name="for" onkeyup="convert('C')">
+    <label for="for">Celsius(°C)</label>
+    <br>
+    <label>Equals to</label>
+    <br>
+    <input type="text" id="usa" name="usa" onkeyup="convert('F')">
+    <label for="usa">Fahrenheit(°F)</label>
+</form>
+
+</body>
+</html>
